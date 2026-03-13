@@ -47,6 +47,7 @@ class ActivityResource extends Resource
 
                 TextInput::make('cr_satuan')
                     ->label('CR/Satuan')
+                    ->numeric()
                     ->maxLength(255),
 
                 TextInput::make('satuan')
@@ -83,6 +84,7 @@ class ActivityResource extends Resource
 
                 TextColumn::make('cr_satuan')
                     ->label('CR/Satuan')
+                    ->numeric(decimalPlaces: 0)
                     ->searchable(),
 
                 TextColumn::make('satuan')

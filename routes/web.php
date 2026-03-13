@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportMonthlyTransactionExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['web', 'auth'])->get(
+    '/admin/report-monthly-transactions/export/{year}/{remarksKey}',
+    ReportMonthlyTransactionExportController::class
+)->name('report-monthly-transactions.export');

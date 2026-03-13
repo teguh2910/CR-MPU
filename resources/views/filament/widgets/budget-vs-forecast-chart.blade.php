@@ -8,7 +8,9 @@
 <x-filament-widgets::widget>
     <x-filament::section>
         <x-slot name="heading">
-            Budget vs Forecast Amount (FY {{ $this->year }})
+            {{-- use helper method so that the heading always matches the
+                 currently selected year from the form state --}}
+            {{ $this->getHeading() }}
         </x-slot>
 
         <div class="space-y-6">
@@ -17,7 +19,11 @@
             </div>
 
             <div>
+                {{-- the wire:key makes Livewire destroy/recreate the element when
+                     any filter value changes; this ensures the Alpine chart
+                     gets re-initialized with fresh data. --}}
                 <div
+                    wire:key="{{ $this->filterValue('year') }}-{{ $this->filterValue('category_id') }}-{{ $this->filterValue('supplier_id') }}-{{ $this->filterValue('product_id') }}"
                     @if (FilamentView::hasSpaMode())
                         x-load="visible"
                     @else

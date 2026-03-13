@@ -12,6 +12,7 @@ class Activity extends Model
 
     protected $fillable = [
         'part_number_id',
+        'cr_no',
         'activity',
         'year',
         'cr_satuan',

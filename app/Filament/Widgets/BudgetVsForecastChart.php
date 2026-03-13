@@ -21,19 +21,66 @@ class BudgetVsForecastChart extends Widget implements Forms\Contracts\HasForms
 
     protected static string $view = 'filament.widgets.budget-vs-forecast-chart';
 
-    public ?int $year = null;
-    public ?int $category_id = null;
-    public ?int $supplier_id = null;
-    public ?int $product_id = null;
+    // Public properties are required by Livewire validation. We keep them
+    // here even though the widget primarily reads filter values from the
+    // form state. The properties will be kept in sync so there are no
+    // discrepancies. We avoid type hints so Livewire can assign arrays when
+    // it occasionally does during hydration (see runtime bug report).
+    public $year = null;
+    public $category_id = null;
+    public $supplier_id = null;
+    public $product_id = null;
 
     public function mount(): void
     {
-        $this->year = QtyBudget::max('year') ?? now()->year;
-        $this->category_id = null;
-        $this->supplier_id = null;
-        $this->product_id = null;
-        
-        $this->form->fill();
+        // initialize the form with a default year (max year in budgets)
+        $this->form->fill([
+            'year' => QtyBudget::max('year') ?? now()->year,
+            'category_id' => null,
+            'supplier_id' => null,
+            'product_id' => null,
+        ]);
+
+        // also populate the public properties so Livewire doesn't complain
+        $this->year = $this->normalizeValue($this->form->getState('year'));
+        $this->category_id = $this->normalizeValue($this->form->getState('category_id'));
+        $this->supplier_id = $this->normalizeValue($this->form->getState('supplier_id'));
+        $this->product_id = $this->normalizeValue($this->form->getState('product_id'));
+    }
+
+    /**
+     * Normalize values to prevent arrays being passed to select fields.
+     * Livewire occasionally assigns arrays during hydration.
+     */
+    protected function normalizeValue($value)
+    {
+        if (is_array($value)) {
+            return null;
+        }
+        return $value;
+    }
+
+    /**
+     * Livewire lifecycle hooks to normalize properties when updated
+     */
+    public function updatedYear($value)
+    {
+        $this->year = $this->normalizeValue($value);
+    }
+
+    public function updatedCategoryId($value)
+    {
+        $this->category_id = $this->normalizeValue($value);
+    }
+
+    public function updatedSupplierId($value)
+    {
+        $this->supplier_id = $this->normalizeValue($value);
+    }
+
+    public function updatedProductId($value)
+    {
+        $this->product_id = $this->normalizeValue($value);
     }
 
     protected function getFormSchema(): array
@@ -75,10 +122,14 @@ class BudgetVsForecastChart extends Widget implements Forms\Contracts\HasForms
 
     public function getChartData(): array
     {
-        $selectedYear = $this->year ?? QtyBudget::max('year') ?? now()->year;
-        $categoryId = $this->category_id;
-        $supplierId = $this->supplier_id;
-        $productId = $this->product_id;
+        // pull values from the form state, falling back to the public
+        // properties if they somehow aren't set yet (defensive).
+        $state = $this->form->getState();
+
+        $selectedYear = $state['year'] ?? $this->year ?? QtyBudget::max('year') ?? now()->year;
+        $categoryId   = $state['category_id'] ?? $this->category_id;
+        $supplierId   = $state['supplier_id'] ?? $this->supplier_id;
+        $productId    = $state['product_id'] ?? $this->product_id;
 
         // Build budget query
         $budgetQuery = QtyBudget::select('month', DB::raw('SUM(qty) as total'))
@@ -181,4 +232,63 @@ class BudgetVsForecastChart extends Widget implements Forms\Contracts\HasForms
             ],
         ];
     }
+
+    /**
+     * Whenever a bound property updates we also mirror it into the form
+     * state so that the `wire:key` and chart data stay in sync with the
+     * latest selection.
+     */
+    public function updated($property, $value)
+    {
+        if (in_array($property, ['year', 'category_id', 'supplier_id', 'product_id'], true)) {
+            // the value might occasionally be an array when Livewire sends the
+            // entire form state - ignore those cases since the form already has
+            // correct data.
+            if (is_array($value)) {
+                return;
+            }
+
+            $this->form->fill([$property => $value]);
+        }
+    }
+
+    /**
+     * Safely read a value from the form state; if Livewire accidentally
+     * passes an array (hydration quirk) we fall back to the public property
+     * or an empty string. Always returns a scalar string for use in blade.
+     */
+    public function filterValue(string $key): string
+    {
+        $val = $this->form->getState($key);
+
+        // if we unexpectedly receive an array from Livewire, ignore it.
+        if (is_array($val)) {
+            $prop = $this->$key ?? '';
+
+            // the bound public property might also be an array during
+            // hydration; make sure we return a scalar string.
+            if (is_array($prop)) {
+                return '';
+            }
+
+            return (string) $prop;
+        }
+
+        // normal scalar value
+        return (string) $val;
+    }
+
+    /**
+     * Return the current heading text for the widget. We pull from the
+     * form state (via filterValue) so that it reflects the selected year
+     * and can be used by the view.
+     */
+    public function getHeading(): string
+    {
+        $year = $this->filterValue('year') ?: (QtyBudget::max('year') ?? now()->year);
+
+        return "Budget vs Forecast Amount (FY {$year})";
+    }
 }
+
+

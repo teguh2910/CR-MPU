@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request for Quotation</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .page-container {
+            background-color: white;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 40px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .bg-highlight {
+            background-color: #ffffcc !important; /* The yellow background in the image */
+        }
+        .table-custom {
+            border: 1px solid black;
+        }
+        .table-custom th, .table-custom td {
+            border: 1px solid black;
+            padding: 4px 8px;
+            vertical-align: middle;
+        }
+        .section-header {
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .header-info p {
+            margin-bottom: 2px;
+        }
+        .nested-table {
+            width: 100%;
+            border: none;
+        }
+        .nested-table td {
+            border: none !important;
+            padding: 2px !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <!-- Header Section -->
+    <div class="row">
+        <div class="col-6">
+            <h4 class="mb-0">To: <span class="fw-normal">PT Sukses Cipta Makmur</span></h4>
+            <div class="bg-highlight d-inline-block px-3 py-1 mt-1">
+                <strong>Mr Wing - Marketing Team</strong>
+            </div>
+        </div>
+        <div class="col-6 text-end header-info">
+            <p class="bg-highlight d-inline-block px-2">2-Mar-2026</p>
+            <p><strong>PT AISIN INDONESIA</strong></p>
+            <p>Part Purchasing Dept.</p>
+            <p class="bg-highlight d-inline-block px-2">PIC: Fernanda S. Irawan</p><br>
+            <p>TEL: +62-813-50140417</p>
+            <p>E-mail: <a href="mailto:fernanda@aisin-indonesia.co.id" class="text-primary text-decoration-underline">fernanda@aisin-indonesia.co.id</a></p>
+        </div>
+    </div>
+
+    <!-- Title -->
+    <div class="text-center my-4">
+        <h1 class="fw-bold">Request for quotation</h1>
+    </div>
+
+    <!-- Product Information -->
+    <div class="section-header">【Product information】</div>
+    <table class="table-custom w-100 text-center mb-0">
+        <thead>
+            <tr>
+                <th style="width: 20%;">Model</th>
+                <th style="width: 20%;">Customer</th>
+                <th style="width: 35%;">product name</th>
+                <th style="width: 25%;">Standard Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="bg-highlight">OGAWA</td>
+                <td>-</td>
+                <td class="bg-highlight">Clutch Cover</td>
+                <td><span class="bg-highlight px-2">As Table</span> /Mon</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table-custom w-100 text-center border-top-0 mb-4">
+        <thead>
+            <tr class="border-top-0">
+                <th style="width: 25%;">Drawing timing</th>
+                <th style="width: 25%;">OTS target</th>
+                <th style="width: 25%;">OTOP target</th>
+                <th style="width: 25%;">SOP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="bg-highlight">G-Drawing</td>
+                <td>-</td>
+                <td>-</td>
+                <td class="bg-highlight">TBC</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Target of request for quotation -->
+    <div class="section-header">【Target of request for quotation】</div>
+    <table class="table-custom w-100 mb-4">
+        <thead class="text-center">
+            <tr>
+                <th>No</th>
+                <th>Parts Number</th>
+                <th>Parts Name</th>
+                <th>Qty/Mon</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">1</td>
+                <td>321121-30270-D1</td>
+                <td class="bg-highlight">Pressure Plate - Mach</td>
+                <td class="bg-highlight text-center">5.741</td>
+                <td rowspan="9" class="bg-highlight align-top" style="font-size: 12px; width: 35%;">
+                    RFQ for Subcont Process Machining + Balancing<br><br>
+                    Please submit quotation with detail information:<br>
+                    1. Rate/min each OP<br>
+                    2. Cycle Time each OP<br>
+                    3. Jig Depreciation<br>
+                    4. Scrapp Calculation
+                </td>
+            </tr>
+            <tr><td class="text-center">2</td><td>321121-30280-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">10</td></tr>
+            <tr><td class="text-center">3</td><td>321121-30290-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">89</td></tr>
+            <tr><td class="text-center">4</td><td>321121-40390-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">413</td></tr>
+            <tr><td class="text-center">5</td><td>321121-40320-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">1.862</td></tr>
+            <tr><td class="text-center">6</td><td>321121-40350-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">309</td></tr>
+            <tr><td class="text-center">7</td><td>321121-40340-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">2.741</td></tr>
+            <tr><td class="text-center">8</td><td>321121-40400-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">121</td></tr>
+            <tr><td class="text-center">9</td><td>321121-40420-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">1.760</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Quotation Due Date -->
+    <div class="section-header">【Quotation Due date】</div>
+    <div style="max-width: 300px;">
+        <table class="table-custom w-100 text-center mb-4">
+            <tr>
+                <td class="bg-highlight py-2">10-Mar-26</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Quotation Prerequisites -->
+    <div class="section-header">【Quotation prerequisites】</div>
+    <table class="table-custom w-100">
+        <tbody>
+            <tr>
+                <td style="width: 35%;">Delivery location:</td>
+                <td class="bg-highlight">PT AISIN INDONESIA (Aii)</td>
+            </tr>
+            <tr>
+                <td>Price incoterm:</td>
+                <td class="bg-highlight">DPP Aii</td>
+            </tr>
+            <tr>
+                <td>Tooling payment method:</td>
+                <td class="bg-highlight">Depreciation</td>
+            </tr>
+            <tr>
+                <td>raw material period:</td>
+                <td class="bg-highlight">2025-2ndhalf (Oct-2025～Mar-2026)</td>
+            </tr>
+            <tr>
+                <td>Material AISIN CPS or Non-CPS:</td>
+                <td class="bg-highlight">Non CPS</td>
+            </tr>
+            <tr>
+                <td>Material AISIN CPS Price:</td>
+                <td class="bg-highlight">-</td>
+            </tr>
+            <tr>
+                <td>exchange rate(period):</td>
+                <td class="bg-highlight p-0">
+                    <div class="p-1 px-2">2025-2ndhalf(Oct-2025～Mar-2026)</div>
+                    <table class="nested-table border-top border-dark">
+                        <tr>
+                            <td>1USD=</td>
+                            <td class="bg-white border-start border-end border-dark text-center">16.407</td>
+                            <td>IDR</td>
+                            <td>1JPY=</td>
+                            <td class="bg-white border-start border-end border-dark text-center">110,54</td>
+                            <td>IDR</td>
+                        </tr>
+                        <tr>
+                            <td>1THB=</td>
+                            <td class="bg-white border-start border-end border-dark text-center">489,65</td>
+                            <td>IDR</td>
+                            <td></td>
+                            <td class="bg-white border-start border-end border-dark text-center"></td>
+                            <td>IDR</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="mt-4" style="font-size: 16px;">
+        ※If you have any inquiries, please contact PIC
+    </div>
+</div>
+
+</body>
+</html>

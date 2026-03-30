@@ -5,10 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ReportMonthlyTransactionResource\Pages;
 use App\Models\ReportMonthlyTransaction;
 use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\DB;
 
 class ReportMonthlyTransactionResource extends Resource
 {
@@ -18,7 +18,7 @@ class ReportMonthlyTransactionResource extends Resource
 
     protected static ?string $navigationGroup = 'Report';
 
-    protected static ?string $navigationLabel = 'Monthly Report History';
+    protected static ?string $navigationLabel = 'Monthly Report CR History';
 
     protected static ?string $modelLabel = 'Monthly Report Transaction';
 
@@ -58,7 +58,22 @@ class ReportMonthlyTransactionResource extends Resource
                     ->color('primary'),
             ])
             ->filters([])
-            ->actions([])
+            ->actions([
+                Tables\Actions\Action::make('delete_snapshot')
+                    ->label('Delete')
+                    ->icon('heroicon-o-trash')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->modalHeading('Delete Snapshot')
+                    ->modalDescription('This will delete all monthly report rows for this remarks and year.')
+                    ->action(function (ReportMonthlyTransaction $record): void {
+                        ReportMonthlyTransaction::query()
+                            ->where('year', (int) $record->year)
+                            ->where('remarks', (string) $record->remarks)
+                            ->delete();
+                    })
+                    ->successNotificationTitle('Snapshot deleted'),
+            ])
             ->bulkActions([])
             ->defaultSort('created_at', 'desc');
     }

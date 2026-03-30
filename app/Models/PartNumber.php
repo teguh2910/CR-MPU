@@ -49,4 +49,29 @@ class PartNumber extends Model
     {
         return $this->hasMany(QtyBudget::class);
     }
+
+    public function rmSuppliers(): HasMany
+    {
+        return $this->hasMany(RmSupplier::class, 'part_no_id');
+    }
+
+    public function processCostSuppliers(): HasMany
+    {
+        return $this->hasMany(ProcessCostSupplier::class, 'part_no_id');
+    }
+
+    public function toolingSuppliers(): HasMany
+    {
+        return $this->hasMany(ToolingSupplier::class, 'part_no_id');
+    }
+
+    public function otherCostSuppliers(): HasMany
+    {
+        return $this->hasMany(OtherCostSupplier::class, 'part_no_id');
+    }
+
+    public function fohProfiySuppliers(): HasMany
+    {
+        return $this->hasMany(FohProfiySupplier::class, 'part_no_id');
+    }
 }

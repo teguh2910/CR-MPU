@@ -71,15 +71,15 @@ class ActivitiesRelationManager extends RelationManager
 
                 TextColumn::make('plan_svp_month')
                     ->label('Plan SVP (Month)')
+                    ->date('d M Y')
                     ->searchable(),
-
-                TextCodate('d M Y')
-                    ->sortable(),
 
                 TextColumn::make('act_svp_month')
                     ->label('Act SVP (Month)')
                     ->date('d M Y')
-                    ->sortmake('created_at')
+                    ->sortable(),
+
+                TextColumn::make('created_at')
                     ->label('Created')
                     ->dateTime('d M Y H:i')
                     ->toggleable(isToggledHiddenByDefault: true),

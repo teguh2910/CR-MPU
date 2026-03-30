@@ -26,13 +26,17 @@ class ReportMonthly extends Page implements HasForms
 
     protected static ?string $navigationGroup = 'Report';
 
-    protected static ?string $navigationLabel = 'Monthly Report';
+    protected static ?string $navigationLabel = 'Monthly CR Report';
 
     protected static ?int $navigationSort = 10;
 
     protected static string $view = 'filament.pages.report-monthly';
 
     public ?array $data = [];
+
+    protected array $updateQtyMonthOptionsCache = [];
+
+    protected array $updateQtyMonthLabelCache = [];
 
     public function mount(): void
     {
@@ -75,20 +79,7 @@ class ReportMonthly extends Page implements HasForms
                                     ->options(function (Get $get): array {
                                         $year = (int) ($get('year') ?? 0);
 
-                                        if ($year <= 0) {
-                                            return [];
-                                        }
-
-                                                $forecasts = UpdateQtyMonth::query()
-                                            ->where('year', $year)
-                                            ->orderByDesc('id')
-                                            ->get()
-                                            ->mapWithKeys(fn (UpdateQtyMonth $record) => [
-                                                $record->id => "{$record->month} {$record->year} #{$record->id}",
-                                            ])
-                                            ->toArray();
-
-                                        return ['budget' => 'Qty Budget'] + $forecasts;
+                                        return $this->getUpdateQtyMonthOptionsForYear($year);
                                     })
                                     ->nullable()
                                     ->native(false)
@@ -304,13 +295,51 @@ class ReportMonthly extends Page implements HasForms
             return null;
         }
 
+        $year = (int) ($this->data['year'] ?? 0);
+        $options = $this->getUpdateQtyMonthOptionsForYear($year);
+
+        if (isset($options[$id])) {
+            return (string) $options[$id];
+        }
+
+        if (isset($this->updateQtyMonthLabelCache[$id])) {
+            return $this->updateQtyMonthLabelCache[$id];
+        }
+
         $record = UpdateQtyMonth::find($id);
 
         if (!$record) {
             return null;
         }
 
-        return "{$record->month} {$record->year} #{$record->id}";
+        $label = "{$record->month} {$record->year} #{$record->id}";
+        $this->updateQtyMonthLabelCache[$id] = $label;
+
+        return $label;
+    }
+
+    protected function getUpdateQtyMonthOptionsForYear(int $year): array
+    {
+        if ($year <= 0) {
+            return [];
+        }
+
+        if (isset($this->updateQtyMonthOptionsCache[$year])) {
+            return $this->updateQtyMonthOptionsCache[$year];
+        }
+
+        $forecasts = UpdateQtyMonth::query()
+            ->where('year', $year)
+            ->orderByDesc('id')
+            ->get()
+            ->mapWithKeys(fn (UpdateQtyMonth $record) => [
+                $record->id => "{$record->month} {$record->year} #{$record->id}",
+            ])
+            ->toArray();
+
+        $this->updateQtyMonthOptionsCache[$year] = ['budget' => 'Qty Budget'] + $forecasts;
+
+        return $this->updateQtyMonthOptionsCache[$year];
     }
 
     protected static function monthAliases(string $month): array

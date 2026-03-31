@@ -2,12 +2,14 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\ReportMonthlyTransaction;
 use App\Models\QtyBudget;
 use App\Models\QtyForecast;
 use App\Models\Category;
 use App\Models\Supplier;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Form;
 use Filament\Widgets\Widget;
 use Illuminate\Support\Facades\DB;
 
@@ -21,160 +23,123 @@ class BudgetVsForecastChart extends Widget implements Forms\Contracts\HasForms
 
     protected static string $view = 'filament.widgets.budget-vs-forecast-chart';
 
-    // Public properties are required by Livewire validation. We keep them
-    // here even though the widget primarily reads filter values from the
-    // form state. The properties will be kept in sync so there are no
-    // discrepancies. We avoid type hints so Livewire can assign arrays when
-    // it occasionally does during hydration (see runtime bug report).
-    public $year = null;
-    public $category_id = null;
-    public $supplier_id = null;
-    public $product_id = null;
+    public ?array $data = [];
 
     public function mount(): void
     {
-        // initialize the form with a default year (max year in budgets)
+        $latestYear = QtyBudget::max('year') ?? now()->year;
+        $latestSnapshot = ReportMonthlyTransaction::query()
+            ->where('year', $latestYear)
+            ->whereNotNull('remarks')
+            ->where('remarks', '!=', '')
+            ->orderByDesc('created_at')
+            ->first();
+
         $this->form->fill([
-            'year' => QtyBudget::max('year') ?? now()->year,
+            'year' => $latestYear,
+            'remarks' => $latestSnapshot?->remarks,
             'category_id' => null,
             'supplier_id' => null,
             'product_id' => null,
         ]);
-
-        // also populate the public properties so Livewire doesn't complain
-        $this->year = $this->normalizeValue($this->form->getState('year'));
-        $this->category_id = $this->normalizeValue($this->form->getState('category_id'));
-        $this->supplier_id = $this->normalizeValue($this->form->getState('supplier_id'));
-        $this->product_id = $this->normalizeValue($this->form->getState('product_id'));
     }
 
-    /**
-     * Normalize values to prevent arrays being passed to select fields.
-     * Livewire occasionally assigns arrays during hydration.
-     */
-    protected function normalizeValue($value)
+    public function form(Form $form): Form
     {
-        if (is_array($value)) {
-            return null;
-        }
-        return $value;
-    }
+        return $form
+            ->schema([
+                Forms\Components\Grid::make(5)
+                    ->schema([
+                        Forms\Components\Select::make('year')
+                            ->label('Fiscal Year')
+                            ->options(fn() => QtyBudget::distinct()
+                                ->pluck('year')
+                                ->sortDesc()
+                                ->mapWithKeys(fn($year) => [$year => 'FY ' . $year])
+                                ->toArray())
+                            ->live(),
+                        
+                        Forms\Components\Select::make('remarks')
+                            ->label('Snapshot')
+                            ->options(function (Forms\Get $get) {
+                                $year = $get('year');
+                                if (!$year) return [];
+                                
+                                return ReportMonthlyTransaction::query()
+                                    ->where('year', $year)
+                                    ->whereNotNull('remarks')
+                                    ->where('remarks', '!=', '')
+                                    ->distinct()
+                                    ->pluck('remarks', 'remarks')
+                                    ->toArray();
+                            })
+                            ->required()
+                            ->native(false)
+                            ->live(),
 
-    /**
-     * Livewire lifecycle hooks to normalize properties when updated
-     */
-    public function updatedYear($value)
-    {
-        $this->year = $this->normalizeValue($value);
-    }
-
-    public function updatedCategoryId($value)
-    {
-        $this->category_id = $this->normalizeValue($value);
-    }
-
-    public function updatedSupplierId($value)
-    {
-        $this->supplier_id = $this->normalizeValue($value);
-    }
-
-    public function updatedProductId($value)
-    {
-        $this->product_id = $this->normalizeValue($value);
-    }
-
-    protected function getFormSchema(): array
-    {
-        return [
-            Forms\Components\Grid::make(4)
-                ->schema([
-                    Forms\Components\Select::make('year')
-                        ->label('Fiscal Year')
-                        ->options(fn() => QtyBudget::distinct()
-                            ->pluck('year')
-                            ->sortDesc()
-                            ->mapWithKeys(fn($year) => [$year => 'FY ' . $year])
-                            ->toArray())
-                        ->default(QtyBudget::max('year') ?? now()->year)
-                        ->live(),
-                    
-                    Forms\Components\Select::make('category_id')
-                        ->label('Category')
-                        ->options(fn() => Category::orderBy('name')->pluck('name', 'id'))
-                        ->placeholder('All Categories')
-                        ->live(),
-                    
-                    Forms\Components\Select::make('supplier_id')
-                        ->label('Supplier')
-                        ->options(fn() => Supplier::orderBy('name')->pluck('name', 'id'))
-                        ->placeholder('All Suppliers')
-                        ->searchable()
-                        ->live(),
-                    
-                    Forms\Components\Select::make('product_id')
-                        ->label('Product')
-                        ->options(fn() => Product::orderBy('name')->pluck('name', 'id'))
-                        ->placeholder('All Products')
-                        ->live(),
-                ]),
-        ];
+                        Forms\Components\Select::make('category_id')
+                            ->label('Category')
+                            ->options(fn() => Category::orderBy('name')->pluck('name', 'id'))
+                            ->placeholder('All Categories')
+                            ->live(),
+                        
+                        Forms\Components\Select::make('supplier_id')
+                            ->label('Supplier')
+                            ->options(fn() => Supplier::orderBy('name')->pluck('name', 'id'))
+                            ->placeholder('All Suppliers')
+                            ->searchable()
+                            ->live(),
+                        
+                        Forms\Components\Select::make('product_id')
+                            ->label('Product')
+                            ->options(fn() => Product::orderBy('name')->pluck('name', 'id'))
+                            ->placeholder('All Products')
+                            ->live(),
+                    ]),
+            ])
+            ->statePath('data');
     }
 
     public function getChartData(): array
     {
-        // pull values from the form state, falling back to the public
-        // properties if they somehow aren't set yet (defensive).
-        $state = $this->form->getState();
+        $selectedYear = $this->data['year'] ?? QtyBudget::max('year') ?? now()->year;
+        $remarks      = $this->data['remarks'] ?? null;
+        $categoryId   = $this->data['category_id'] ?? null;
+        $supplierId   = $this->data['supplier_id'] ?? null;
+        $productId    = $this->data['product_id'] ?? null;
 
-        $selectedYear = $state['year'] ?? $this->year ?? QtyBudget::max('year') ?? now()->year;
-        $categoryId   = $state['category_id'] ?? $this->category_id;
-        $supplierId   = $state['supplier_id'] ?? $this->supplier_id;
-        $productId    = $state['product_id'] ?? $this->product_id;
+        $budgetData = [];
+        $forecastData = [];
 
-        // Build budget query
-        $budgetQuery = QtyBudget::select('month', DB::raw('SUM(qty) as total'))
-            ->where('year', $selectedYear);
+        if ($remarks) {
+            // Data from ReportMonthlyTransaction (Snapshot)
+            $query = ReportMonthlyTransaction::query()
+                ->where('year', $selectedYear)
+                ->where('remarks', $remarks);
 
-        // Build forecast query
-        $forecastQuery = QtyForecast::select('month', DB::raw('SUM(qty) as total'))
-            ->where('year', $selectedYear);
+            if ($categoryId || $supplierId || $productId) {
+                $query->whereHas('partNumber', function ($q) use ($categoryId, $supplierId, $productId) {
+                    if ($categoryId) {
+                        $q->where('category_id', $categoryId);
+                    }
+                    if ($supplierId) {
+                        $q->where('supplier_id', $supplierId);
+                    }
+                    if ($productId) {
+                        $q->where('product_id', $productId);
+                    }
+                });
+            }
 
-        // Apply filters through part_number relationship
-        if ($categoryId || $supplierId || $productId) {
-            $budgetQuery->whereHas('partNumber', function ($query) use ($categoryId, $supplierId, $productId) {
-                if ($categoryId) {
-                    $query->where('category_id', $categoryId);
-                }
-                if ($supplierId) {
-                    $query->where('supplier_id', $supplierId);
-                }
-                if ($productId) {
-                    $query->where('product_id', $productId);
-                }
-            });
+            $results = $query->select('month', 
+                    DB::raw('SUM(qty_budget) as total_budget'),
+                    DB::raw('SUM(qty_forecast) as total_forecast'))
+                ->groupBy('month')
+                ->get();
 
-            $forecastQuery->whereHas('partNumber', function ($query) use ($categoryId, $supplierId, $productId) {
-                if ($categoryId) {
-                    $query->where('category_id', $categoryId);
-                }
-                if ($supplierId) {
-                    $query->where('supplier_id', $supplierId);
-                }
-                if ($productId) {
-                    $query->where('product_id', $productId);
-                }
-            });
+            $budgetData = $results->pluck('total_budget', 'month')->toArray();
+            $forecastData = $results->pluck('total_forecast', 'month')->toArray();
         }
-
-        // Get monthly budget totals
-        $budgetData = $budgetQuery->groupBy('month')
-            ->pluck('total', 'month')
-            ->toArray();
-
-        // Get monthly forecast totals
-        $forecastData = $forecastQuery->groupBy('month')
-            ->pluck('total', 'month')
-            ->toArray();
 
         // Month names mapping - Fiscal Year (Apr-Mar)
         $monthMapping = [
@@ -234,60 +199,35 @@ class BudgetVsForecastChart extends Widget implements Forms\Contracts\HasForms
     }
 
     /**
-     * Whenever a bound property updates we also mirror it into the form
-     * state so that the `wire:key` and chart data stay in sync with the
-     * latest selection.
-     */
-    public function updated($property, $value)
-    {
-        if (in_array($property, ['year', 'category_id', 'supplier_id', 'product_id'], true)) {
-            // the value might occasionally be an array when Livewire sends the
-            // entire form state - ignore those cases since the form already has
-            // correct data.
-            if (is_array($value)) {
-                return;
-            }
-
-            $this->form->fill([$property => $value]);
-        }
-    }
-
-    /**
-     * Safely read a value from the form state; if Livewire accidentally
-     * passes an array (hydration quirk) we fall back to the public property
-     * or an empty string. Always returns a scalar string for use in blade.
+     * Safely read a value from the form data. Returns a scalar string for use in blade.
      */
     public function filterValue(string $key): string
     {
-        $val = $this->form->getState($key);
+        $val = $this->data[$key] ?? '';
 
-        // if we unexpectedly receive an array from Livewire, ignore it.
         if (is_array($val)) {
-            $prop = $this->$key ?? '';
-
-            // the bound public property might also be an array during
-            // hydration; make sure we return a scalar string.
-            if (is_array($prop)) {
-                return '';
-            }
-
-            return (string) $prop;
+            return '';
         }
 
-        // normal scalar value
         return (string) $val;
     }
 
     /**
-     * Return the current heading text for the widget. We pull from the
-     * form state (via filterValue) so that it reflects the selected year
-     * and can be used by the view.
+     * Return the current heading text for the widget.
      */
     public function getHeading(): string
     {
         $year = $this->filterValue('year') ?: (QtyBudget::max('year') ?? now()->year);
+        $remarks = $this->filterValue('remarks');
 
-        return "Budget vs Forecast Amount (FY {$year})";
+        $title = "Budget vs Forecast Amount (FY {$year})";
+        if ($remarks) {
+            $title .= " - Snapshot: {$remarks}";
+        } else {
+            $title .= " - No Snapshot Selected";
+        }
+
+        return $title;
     }
 }
 

@@ -1,226 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request for Quotation</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-        .page-container {
-            background-color: white;
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 40px;
-            border: 1px solid #dee2e6;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .bg-highlight {
-            background-color: #ffffcc !important; /* The yellow background in the image */
-        }
-        .table-custom {
-            border: 1px solid black;
-        }
-        .table-custom th, .table-custom td {
-            border: 1px solid black;
-            padding: 4px 8px;
-            vertical-align: middle;
-        }
-        .section-header {
-            font-weight: bold;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-        .header-info p {
-            margin-bottom: 2px;
-        }
-        .nested-table {
-            width: 100%;
-            border: none;
-        }
-        .nested-table td {
-            border: none !important;
-            padding: 2px !important;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">Portfolio</a>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
-<div class="page-container">
-    <!-- Header Section -->
-    <div class="row">
-        <div class="col-6">
-            <h4 class="mb-0">To: <span class="fw-normal">PT Sukses Cipta Makmur</span></h4>
-            <div class="bg-highlight d-inline-block px-3 py-1 mt-1">
-                <strong>Mr Wing - Marketing Team</strong>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-title">Your Name</h1>
+        <p class="hero-subtitle">
+          <span class="typing-text">Full Stack Developer</span>
+          <span class="cursor">|</span>
+        </p>
+        <p class="hero-description">I create beautiful and functional web experiences that make a difference.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-wrapper">
+          <div class="hero-image-bg"></div>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Profile" class="profile-img">
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <p>Scroll Down</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Get To Know</p>
+        <h2 class="section-title">About Me</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-image">
+          <div class="about-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=600&fit=crop" alt="About Image">
+          </div>
+        </div>
+        <div class="about-text">
+          <div class="about-cards">
+            <div class="about-card">
+              <i class="fas fa-award"></i>
+              <h3>Experience</h3>
+              <p>2+ Years</p>
             </div>
+            <div class="about-card">
+              <i class="fas fa-project-diagram"></i>
+              <h3>Projects</h3>
+              <p>20+ Completed</p>
+            </div>
+            <div class="about-card">
+              <i class="fas fa-users"></i>
+              <h3>Clients</h3>
+              <p>10+ Happy</p>
+            </div>
+          </div>
+          <p class="about-description">
+            I'm a passionate Full Stack Developer with expertise in building modern web applications. 
+            I love turning complex problems into simple, beautiful, and intuitive solutions. 
+            My goal is to create impactful digital experiences that help businesses grow and succeed.
+          </p>
+          <a href="#contact" class="btn btn-primary">Let's Talk</a>
         </div>
-        <div class="col-6 text-end header-info">
-            <p class="bg-highlight d-inline-block px-2">2-Mar-2026</p>
-            <p><strong>PT AISIN INDONESIA</strong></p>
-            <p>Part Purchasing Dept.</p>
-            <p class="bg-highlight d-inline-block px-2">PIC: Fernanda S. Irawan</p><br>
-            <p>TEL: +62-813-50140417</p>
-            <p>E-mail: <a href="mailto:fernanda@aisin-indonesia.co.id" class="text-primary text-decoration-underline">fernanda@aisin-indonesia.co.id</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">My Recent Work</p>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project 1">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>E-Commerce Platform</h3>
+            <p>A full-featured online shopping platform with payment integration, user authentication, and admin dashboard.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Project 2">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Analytics Dashboard</h3>
+            <p>Real-time data visualization dashboard with interactive charts, reports, and customizable widgets.</p>
+            <div class="project-tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">D3.js</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Project 3">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Task Management App</h3>
+            <p>Collaborative task management tool with real-time updates, team collaboration, and progress tracking.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Project 4">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Mobile Banking App</h3>
+            <p>Secure mobile banking application with biometric authentication, transaction history, and bill payments.</p>
+            <div class="project-tags">
+              <span class="tag">React Native</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Project 5">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Social Media Platform</h3>
+            <p>Feature-rich social networking platform with posts, stories, messaging, and real-time notifications.</p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">AWS</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="Project 6">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>AI Content Generator</h3>
+            <p>AI-powered content creation tool that generates blog posts, social media content, and marketing copy.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenAI</span>
+              <span class="tag">FastAPI</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">My Technical</p>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skills-content">
+        <div class="skills-category">
+          <h3><i class="fas fa-code"></i> Frontend Development</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-html5"></i></div>
+              <span class="skill-name">HTML5</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 95%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+              <span class="skill-name">CSS3</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-js"></i></div>
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 88%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-react"></i></div>
+              <span class="skill-name">React</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-vuejs"></i></div>
+              <span class="skill-name">Vue.js</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-sass"></i></div>
+              <span class="skill-name">Sass/SCSS</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
+            </div>
+          </div>
         </div>
+        <div class="skills-category">
+          <h3><i class="fas fa-server"></i> Backend Development</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+              <span class="skill-name">Node.js</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-python"></i></div>
+              <span class="skill-name">Python</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-database"></i></div>
+              <span class="skill-name">MongoDB</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 75%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-database"></i></div>
+              <span class="skill-name">PostgreSQL</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 78%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-docker"></i></div>
+              <span class="skill-name">Docker</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 70%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-aws"></i></div>
+              <span class="skill-name">AWS</span>
+              <div class="skill-level"><div class="skill-progress" style="width: 65%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Title -->
-    <div class="text-center my-4">
-        <h1 class="fw-bold">Request for quotation</h1>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Get In Touch</p>
+        <h2 class="section-title">Contact Me</h2>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Email</h3>
+              <p>your.email@example.com</p>
+              <a href="mailto:your.email@example.com">Send a message</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-details">
+              <h3>WhatsApp</h3>
+              <p>+62 812 3456 7890</p>
+              <a href="https://wa.me/6281234567890" target="_blank">Send a message</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-telegram"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Telegram</h3>
+              <p>@yourusername</p>
+              <a href="https://t.me/yourusername" target="_blank">Send a message</a>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" action="submit-form.php" method="post">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
     </div>
+  </section>
 
-    <!-- Product Information -->
-    <div class="section-header">【Product information】</div>
-    <table class="table-custom w-100 text-center mb-0">
-        <thead>
-            <tr>
-                <th style="width: 20%;">Model</th>
-                <th style="width: 20%;">Customer</th>
-                <th style="width: 35%;">product name</th>
-                <th style="width: 25%;">Standard Qty</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="bg-highlight">OGAWA</td>
-                <td>-</td>
-                <td class="bg-highlight">Clutch Cover</td>
-                <td><span class="bg-highlight px-2">As Table</span> /Mon</td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table-custom w-100 text-center border-top-0 mb-4">
-        <thead>
-            <tr class="border-top-0">
-                <th style="width: 25%;">Drawing timing</th>
-                <th style="width: 25%;">OTS target</th>
-                <th style="width: 25%;">OTOP target</th>
-                <th style="width: 25%;">SOP</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="bg-highlight">G-Drawing</td>
-                <td>-</td>
-                <td>-</td>
-                <td class="bg-highlight">TBC</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Target of request for quotation -->
-    <div class="section-header">【Target of request for quotation】</div>
-    <table class="table-custom w-100 mb-4">
-        <thead class="text-center">
-            <tr>
-                <th>No</th>
-                <th>Parts Number</th>
-                <th>Parts Name</th>
-                <th>Qty/Mon</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="text-center">1</td>
-                <td>321121-30270-D1</td>
-                <td class="bg-highlight">Pressure Plate - Mach</td>
-                <td class="bg-highlight text-center">5.741</td>
-                <td rowspan="9" class="bg-highlight align-top" style="font-size: 12px; width: 35%;">
-                    RFQ for Subcont Process Machining + Balancing<br><br>
-                    Please submit quotation with detail information:<br>
-                    1. Rate/min each OP<br>
-                    2. Cycle Time each OP<br>
-                    3. Jig Depreciation<br>
-                    4. Scrapp Calculation
-                </td>
-            </tr>
-            <tr><td class="text-center">2</td><td>321121-30280-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">10</td></tr>
-            <tr><td class="text-center">3</td><td>321121-30290-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">89</td></tr>
-            <tr><td class="text-center">4</td><td>321121-40390-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">413</td></tr>
-            <tr><td class="text-center">5</td><td>321121-40320-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">1.862</td></tr>
-            <tr><td class="text-center">6</td><td>321121-40350-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">309</td></tr>
-            <tr><td class="text-center">7</td><td>321121-40340-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">2.741</td></tr>
-            <tr><td class="text-center">8</td><td>321121-40400-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">121</td></tr>
-            <tr><td class="text-center">9</td><td>321121-40420-D1</td><td class="bg-highlight">Pressure Plate - Mach</td><td class="bg-highlight text-center">1.760</td></tr>
-        </tbody>
-    </table>
-
-    <!-- Quotation Due Date -->
-    <div class="section-header">【Quotation Due date】</div>
-    <div style="max-width: 300px;">
-        <table class="table-custom w-100 text-center mb-4">
-            <tr>
-                <td class="bg-highlight py-2">10-Mar-26</td>
-            </tr>
-        </table>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <a href="#" class="nav-logo">Portfolio</a>
+          <p>Creating digital experiences that matter.</p>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Your Name. All rights reserved.</p>
+      </div>
     </div>
+  </footer>
 
-    <!-- Quotation Prerequisites -->
-    <div class="section-header">【Quotation prerequisites】</div>
-    <table class="table-custom w-100">
-        <tbody>
-            <tr>
-                <td style="width: 35%;">Delivery location:</td>
-                <td class="bg-highlight">PT AISIN INDONESIA (Aii)</td>
-            </tr>
-            <tr>
-                <td>Price incoterm:</td>
-                <td class="bg-highlight">DPP Aii</td>
-            </tr>
-            <tr>
-                <td>Tooling payment method:</td>
-                <td class="bg-highlight">Depreciation</td>
-            </tr>
-            <tr>
-                <td>raw material period:</td>
-                <td class="bg-highlight">2025-2ndhalf (Oct-2025～Mar-2026)</td>
-            </tr>
-            <tr>
-                <td>Material AISIN CPS or Non-CPS:</td>
-                <td class="bg-highlight">Non CPS</td>
-            </tr>
-            <tr>
-                <td>Material AISIN CPS Price:</td>
-                <td class="bg-highlight">-</td>
-            </tr>
-            <tr>
-                <td>exchange rate(period):</td>
-                <td class="bg-highlight p-0">
-                    <div class="p-1 px-2">2025-2ndhalf(Oct-2025～Mar-2026)</div>
-                    <table class="nested-table border-top border-dark">
-                        <tr>
-                            <td>1USD=</td>
-                            <td class="bg-white border-start border-end border-dark text-center">16.407</td>
-                            <td>IDR</td>
-                            <td>1JPY=</td>
-                            <td class="bg-white border-start border-end border-dark text-center">110,54</td>
-                            <td>IDR</td>
-                        </tr>
-                        <tr>
-                            <td>1THB=</td>
-                            <td class="bg-white border-start border-end border-dark text-center">489,65</td>
-                            <td>IDR</td>
-                            <td></td>
-                            <td class="bg-white border-start border-end border-dark text-center"></td>
-                            <td>IDR</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <script>
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
 
-    <div class="mt-4" style="font-size: 16px;">
-        ※If you have any inquiries, please contact PIC
-    </div>
-</div>
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
 
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Typing animation
+    const typingText = document.querySelector('.typing-text');
+    const words = ['Full Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Tech Enthusiast'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+      const currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        typingText.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingText.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(type, 500);
+      } else {
+        setTimeout(type, isDeleting ? 50 : 100);
+      }
+    }
+
+    type();
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card, .skill-item, .about-card, .contact-card').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>

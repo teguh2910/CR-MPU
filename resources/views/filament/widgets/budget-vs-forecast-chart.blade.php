@@ -23,7 +23,7 @@
                      any filter value changes; this ensures the Alpine chart
                      gets re-initialized with fresh data. --}}
                 <div
-                    wire:key="{{ $this->filterValue('year') }}-{{ $this->filterValue('category_id') }}-{{ $this->filterValue('supplier_id') }}-{{ $this->filterValue('product_id') }}"
+                    wire:key="{{ $this->filterValue('year') }}-{{ $this->filterValue('remarks') }}-{{ $this->filterValue('category_id') }}-{{ $this->filterValue('supplier_id') }}-{{ $this->filterValue('product_id') }}"
                     @if (FilamentView::hasSpaMode())
                         x-load="visible"
                     @else

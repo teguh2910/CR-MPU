@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SupplierResource\Pages;
 use App\Models\Supplier;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -15,7 +16,7 @@ class SupplierResource extends Resource
 {
     protected static ?string $model = Supplier::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
 
     protected static ?string $navigationGroup = 'Master Data';
 
@@ -27,6 +28,17 @@ class SupplierResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
+                
+                Textarea::make('address')
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                
+                TextInput::make('contact_name')
+                    ->maxLength(255),
+                
+                TextInput::make('contact_phone')
+                    ->tel()
+                    ->maxLength(255),
             ]);
     }
 
@@ -37,6 +49,17 @@ class SupplierResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
+
+                TextColumn::make('contact_name')
+                    ->searchable()
+                    ->sortable(),
+
+                TextColumn::make('contact_phone')
+                    ->searchable(),
+
+                TextColumn::make('address')
+                    ->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('created_at')
                     ->label('Created')

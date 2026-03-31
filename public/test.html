@@ -1,510 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name - Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Confirmation Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f5f7;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+        }
+        .form-container {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 0.5rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .form-header {
+            background-color: #f0f2f5;
+            border-bottom: 1px solid #ced4da;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            padding: 1rem;
+        }
+        .info-field {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            padding: 0.2rem 0.5rem;
+            margin-bottom: 0.3rem;
+            display: block;
+            width: 100%;
+        }
+        .inline-info-box {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            padding: 0.2rem 0.5rem;
+            display: inline-block;
+            min-width: 250px;
+        }
+        .custom-fieldset {
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        .custom-legend {
+            background: white;
+            padding: 0 0.5rem;
+            font-weight: bold;
+            position: absolute;
+            top: -0.8rem;
+            left: 1rem;
+        }
+        .date-legend-right {
+            background: white;
+            padding: 0 0.5rem;
+            position: absolute;
+            top: -0.8rem;
+            right: 1rem;
+        }
+        .table th {
+            background-color: #f8f9fa !important;
+            vertical-align: middle;
+        }
+        .sort-icon {
+            color: #adb5bd;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        .signature-card {
+            border: 1px solid #ced4da;
+            border-radius: 0.5rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .signature-line {
+            border-bottom: 2px solid #000;
+            margin: 2rem auto 1rem auto;
+            width: 80%;
+        }
+        .btn-draft {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+        .btn-draft:hover { background-color: #5a6268; color: white; }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">Portfolio</a>
-      <ul class="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
+
+    <div class="form-container">
+        <div class="form-header text-center">
+            <h5 class="mb-0 fw-bold">Price Confirmation April – September 2026 Period</h5>
+        </div>
+
+        <div class="p-4">
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="inline-info-box">No: 079/AII/PUR/II/2026</div>
+                <div>Bekasi, March 31, 2026</div>
+            </div>
+
+            <div class="custom-fieldset mb-4">
+                <div class="custom-legend">Recipient Information</div>
+                <div class="date-legend-right">Bekasi, March 31, 2026</div>
+                
+                <p class="mb-1 mt-2">To:</p>
+                <div class="info-field">PT Nitto Materials Indonesia</div>
+                <div class="info-field">Jl Kenari Raya Block G 3A, No .02</div>
+                <div class="info-field">Delta Silicon, Cikarang Pusat - Bekasi 17550</div>
+                <div class="info-field">Telp. (021) 897-1550</div>
+                
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <span style="display:inline-block; width: 40px;">Attn</span>: <strong>Mr. Eko Budi S.</strong>
+                    </div>
+                    <div class="col-12">
+                        <span style="display:inline-block; width: 40px;">Cc</span>: <strong>Mr. Wuryanto</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-3">
+                <h6 class="fw-bold mb-3">Price Confirmation April – September 2026 Period</h6>
+            </div>
+            <p class="mb-1">Dear Sir,</p>
+            <p class="mb-3 d-flex align-items-start">
+                <span class="border px-1 me-2 bg-light text-secondary">+</span>
+                Refer to your quotation for price adjustment April – September 2026, herewith we would like to confirm as follow:
+            </p>
+
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered table-sm text-center align-middle">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Part No. <span class="sort-icon">&#x21C5;</span></th>
+                            <th>Part Name <span class="sort-icon">&#x21C5;</span></th>
+                            <th>Oct'25-Mar'26<br>IDR/pcs</th>
+                            <th>Apr-Sep'26<br>IDR/pcs <span class="sort-icon">&#x21C5;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>455167-15470</td><td class="text-start">Seal Door Frame Moulding No,2</td><td>1,230</td><td>1,237</td></tr>
+                        <tr><td>2</td><td>455167-15460</td><td class="text-start">Seal Door Frame Moulding No,1</td><td>1,323</td><td>1,330</td></tr>
+                        <tr><td>3</td><td>455167-15510</td><td class="text-start">Seal Door Frame Moulding No,1</td><td>930</td><td>976</td></tr>
+                        <tr><td>4</td><td>411296-10360</td><td class="text-start">Seal Door Lock</td><td>220</td><td>221</td></tr>
+                        <tr><td>5</td><td>455167-17220</td><td class="text-start">Seal Door Frame Moulding No,2</td><td>1,760</td><td>1,769</td></tr>
+                        <tr><td>6</td><td>455167-17230</td><td class="text-start">Seal Door Frame Moulding No,2</td><td>1,844</td><td>1,854</td></tr>
+                        <tr><td>7</td><td>451722-10980-D</td><td class="text-start">LWR FRAME NO,1 RH</td><td>3,381</td><td>3,400</td></tr>
+                        <tr><td>8</td><td>451721-10980-D</td><td class="text-start">LWR FRAME NO,1 RH</td><td>3,381</td><td>3,400</td></tr>
+                        <tr><td>9</td><td>451722-11060-C</td><td class="text-start">SEAL LWR Frame No, 1 LH</td><td>2,337</td><td>2,350</td></tr>
+                        <tr><td>10</td><td>451721-11060</td><td class="text-start">SEAL LWR Frame No, 1 LH</td><td>2,337</td><td>2,350</td></tr>
+                        <tr><td>11</td><td>451683-11320</td><td class="text-start">SEAL, RR DOOR WINDOW NO, 1</td><td>149</td><td>149</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="position-relative">
+                <div class="position-absolute bg-secondary text-white rounded" style="top: -10px; right: 0px; width: 16px; height: 16px; display:flex; align-items:center; justify-content:center; font-size: 10px;">
+                    &#10003;
+                </div>
+                <div class="table-responsive mb-3">
+                    <table class="table table-bordered table-sm text-center align-middle">
+                        <thead>
+                            <tr>
+                                <th class="text-start" colspan="2">Item of adjustment:</th>
+                                <th>Oct'25-Mar'26</th>
+                                <th>Apr-Sep'26</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start border-end-0">1. Exchange Rate</td>
+                                <td class="text-start border-start-0">- USD/IDR</td>
+                                <td class="bg-light">16,407</td>
+                                <td class="bg-light">16,503</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start" colspan="2">2. Material</td>
+                                <td>+0</td>
+                                <td><strong>&leftarrow;</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <p class="mb-0">Remarks:</p>
+                <p>Cost reduction and Kadai activities will be negotiated and agreed later regarding to price competitiveness</p>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="signature-card">
+                        <div><strong>Approved</strong></div>
+                        <div>
+                            <div class="signature-line"></div>
+                            <strong>Budhi Jaya</strong><br>
+                            PUR&Import GM<br><br>
+                            ( ___ / ___ / ___ )
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="signature-card">
+                        <div><strong>Acknowledge</strong></div>
+                        <div>
+                            <div class="signature-line"></div>
+                            <strong>Herlina Trisnawati, S</strong><br>
+                            FACC&PUR Director<br><br>
+                            ( ___ / ___ / ___ )
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="signature-card">
+                        <div><strong>Supplier Acceptance,</strong></div>
+                        <div>
+                            <div class="signature-line"></div>
+                            <strong>Mr Wuryanto</strong><br>
+                            PT Nitto Materials Indonesia<br><br>
+                            ( ___ / ___ / ___ )
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button type="button" class="btn btn-draft px-4 py-2 rounded">Save as Draft</button>
+                <button type="submit" class="btn btn-primary px-4 py-2 rounded">Submit Confirmation</button>
+            </div>
+
+        </div>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <p class="hero-greeting">Hello, I'm</p>
-        <h1 class="hero-title">Your Name</h1>
-        <p class="hero-subtitle">
-          <span class="typing-text">Full Stack Developer</span>
-          <span class="cursor">|</span>
-        </p>
-        <p class="hero-description">I create beautiful and functional web experiences that make a difference.</p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-        </div>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="hero-image-wrapper">
-          <div class="hero-image-bg"></div>
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Profile" class="profile-img">
-        </div>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="mouse">
-        <div class="wheel"></div>
-      </div>
-      <p>Scroll Down</p>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-subtitle">Get To Know</p>
-        <h2 class="section-title">About Me</h2>
-      </div>
-      <div class="about-content">
-        <div class="about-image">
-          <div class="about-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=600&fit=crop" alt="About Image">
-          </div>
-        </div>
-        <div class="about-text">
-          <div class="about-cards">
-            <div class="about-card">
-              <i class="fas fa-award"></i>
-              <h3>Experience</h3>
-              <p>2+ Years</p>
-            </div>
-            <div class="about-card">
-              <i class="fas fa-project-diagram"></i>
-              <h3>Projects</h3>
-              <p>20+ Completed</p>
-            </div>
-            <div class="about-card">
-              <i class="fas fa-users"></i>
-              <h3>Clients</h3>
-              <p>10+ Happy</p>
-            </div>
-          </div>
-          <p class="about-description">
-            I'm a passionate Full Stack Developer with expertise in building modern web applications. 
-            I love turning complex problems into simple, beautiful, and intuitive solutions. 
-            My goal is to create impactful digital experiences that help businesses grow and succeed.
-          </p>
-          <a href="#contact" class="btn btn-primary">Let's Talk</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-subtitle">My Recent Work</p>
-        <h2 class="section-title">Projects</h2>
-      </div>
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project 1">
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>E-Commerce Platform</h3>
-            <p>A full-featured online shopping platform with payment integration, user authentication, and admin dashboard.</p>
-            <div class="project-tags">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">MongoDB</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Project 2">
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>Analytics Dashboard</h3>
-            <p>Real-time data visualization dashboard with interactive charts, reports, and customizable widgets.</p>
-            <div class="project-tags">
-              <span class="tag">Vue.js</span>
-              <span class="tag">D3.js</span>
-              <span class="tag">Python</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Project 3">
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>Task Management App</h3>
-            <p>Collaborative task management tool with real-time updates, team collaboration, and progress tracking.</p>
-            <div class="project-tags">
-              <span class="tag">React</span>
-              <span class="tag">Firebase</span>
-              <span class="tag">Tailwind</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Project 4">
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>Mobile Banking App</h3>
-            <p>Secure mobile banking application with biometric authentication, transaction history, and bill payments.</p>
-            <div class="project-tags">
-              <span class="tag">React Native</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">PostgreSQL</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 5 -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Project 5">
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>Social Media Platform</h3>
-            <p>Feature-rich social networking platform with posts, stories, messaging, and real-time notifications.</p>
-            <div class="project-tags">
-              <span class="tag">Next.js</span>
-              <span class="tag">GraphQL</span>
-              <span class="tag">AWS</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 6 -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="Project 6">
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="project-link" title="View Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>AI Content Generator</h3>
-            <p>AI-powered content creation tool that generates blog posts, social media content, and marketing copy.</p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">OpenAI</span>
-              <span class="tag">FastAPI</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-subtitle">My Technical</p>
-        <h2 class="section-title">Skills</h2>
-      </div>
-      <div class="skills-content">
-        <div class="skills-category">
-          <h3><i class="fas fa-code"></i> Frontend Development</h3>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-html5"></i></div>
-              <span class="skill-name">HTML5</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 95%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-              <span class="skill-name">CSS3</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 90%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-js"></i></div>
-              <span class="skill-name">JavaScript</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 88%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-react"></i></div>
-              <span class="skill-name">React</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-vuejs"></i></div>
-              <span class="skill-name">Vue.js</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-sass"></i></div>
-              <span class="skill-name">Sass/SCSS</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="skills-category">
-          <h3><i class="fas fa-server"></i> Backend Development</h3>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-node-js"></i></div>
-              <span class="skill-name">Node.js</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-python"></i></div>
-              <span class="skill-name">Python</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-database"></i></div>
-              <span class="skill-name">MongoDB</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 75%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-database"></i></div>
-              <span class="skill-name">PostgreSQL</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 78%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-docker"></i></div>
-              <span class="skill-name">Docker</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 70%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-aws"></i></div>
-              <span class="skill-name">AWS</span>
-              <div class="skill-level"><div class="skill-progress" style="width: 65%"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-subtitle">Get In Touch</p>
-        <h2 class="section-title">Contact Me</h2>
-      </div>
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Email</h3>
-              <p>your.email@example.com</p>
-              <a href="mailto:your.email@example.com">Send a message</a>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="contact-details">
-              <h3>WhatsApp</h3>
-              <p>+62 812 3456 7890</p>
-              <a href="https://wa.me/6281234567890" target="_blank">Send a message</a>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fab fa-telegram"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Telegram</h3>
-              <p>@yourusername</p>
-              <a href="https://t.me/yourusername" target="_blank">Send a message</a>
-            </div>
-          </div>
-        </div>
-        <form class="contact-form" action="submit-form.php" method="post">
-          <div class="form-group">
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-          </div>
-          <div class="form-group">
-            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <a href="#" class="nav-logo">Portfolio</a>
-          <p>Creating digital experiences that matter.</p>
-        </div>
-        <div class="footer-social">
-          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile Navigation Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Typing animation
-    const typingText = document.querySelector('.typing-text');
-    const words = ['Full Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Tech Enthusiast'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function type() {
-      const currentWord = words[wordIndex];
-      
-      if (isDeleting) {
-        typingText.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typingText.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-      if (!isDeleting && charIndex === currentWord.length) {
-        isDeleting = true;
-        setTimeout(type, 2000);
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        setTimeout(type, 500);
-      } else {
-        setTimeout(type, isDeleting ? 50 : 100);
-      }
-    }
-
-    type();
-
-    // Scroll reveal animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.project-card, .skill-item, .about-card, .contact-card').forEach(el => {
-      el.classList.add('reveal');
-      observer.observe(el);
-    });
-  </script>
 </body>
 </html>
